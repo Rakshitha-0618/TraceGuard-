@@ -7,7 +7,7 @@
 
 const API_BASE =
   (typeof import.meta !== "undefined" && import.meta.env?.VITE_API_URL) ||
-  "https://onrender.com";
+  mongodb+srv://yrakshitha129099_db_user:Rakshitha12@cluster0.vcdyoec.mongodb.net/traceguard;
 
 
 const TOKEN_KEY = "token";
