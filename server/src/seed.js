@@ -1,0 +1,12 @@
+import mongoose from "mongoose";
+import bcrypt from "bcryptjs";
+import dotenv from "dotenv";
+dotenv.config();
+const U=mongoose.model("User",new mongoose.Schema({name:String,email:{type:String,unique:true},passwordHash:String,role:String},{timestamps:true}));
+const C=mongoose.model("Case",new mongoose.Schema({title:String,category:String,description:String,severity:String,status:String,reporter:mongoose.Schema.Types.ObjectId,assignedTo:mongoose.Schema.Types.ObjectId,evidence:Array,notes:Array},{timestamps:true}));
+await mongoose.connect(process.env.MONGODB_URI);
+const passwordHash=await bcrypt.hash("TraceGuard@123",12);
+for(const u of [{name:"TraceGuard Admin",email:"admin@traceguard.local",role:"admin"},{name:"Alex Investigator",email:"investigator@traceguard.local",role:"investigator"},{name:"Demo Reporter",email:"reporter@traceguard.local",role:"reporter"}])await U.updateOne({email:u.email},{$set:{...u,passwordHash}},{upsert:true});
+const r=await U.findOne({email:"reporter@traceguard.local"}),i=await U.findOne({email:"investigator@traceguard.local"});
+if(!(await C.countDocuments()))await C.create([{title:"Unassigned payment fraud demo",category:"Payment Fraud",description:"Sample complaint awaiting admin assignment.",severity:"High",status:"Pending",reporter:r._id,assignedTo:null,evidence:[],notes:[]},{title:"Assigned phishing investigation demo",category:"Phishing",description:"Sample case already assigned to Alex Investigator.",severity:"Medium",status:"Under Investigation",reporter:r._id,assignedTo:i._id,evidence:[],notes:[]}]);
+console.log("Seed complete. Demo password: TraceGuard@123");await mongoose.disconnect();
