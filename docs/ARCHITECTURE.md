@@ -1,0 +1,1 @@
+Frontend: Vite client on 5173. Backend: Express REST API on 5000. Database: MongoDB/Mongoose. Authentication: JWT and bcrypt. Authorization: role middleware plus per-case ownership/assignment checks. Evidence: multipart upload and server-side SHA-256.
