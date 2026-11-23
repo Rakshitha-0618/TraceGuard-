@@ -7,7 +7,7 @@
 
 const API_BASE =
   (typeof import.meta !== "undefined" && import.meta.env?.VITE_API_URL) ||
- mongodb+srv://yrakshitha129099_db_user:Raksdhitha12@cluster0.vcdyoec.mongodb.net/traceguard;
+ https://traceguard-jojp.onrender.com;
 
 const TOKEN_KEY = "token";
 const DEMO_PASSWORD = "TraceGuard@123";
