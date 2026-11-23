@@ -7,7 +7,7 @@
 
 const API_BASE =
   (typeof import.meta !== "undefined" && import.meta.env?.VITE_API_URL) ||
-  "http://localhost:4000/api";
+ mongodb+srv://yrakshitha129099_db_user:Raksdhitha12@cluster0.vcdyoec.mongodb.net/traceguard;
 
 const TOKEN_KEY = "token";
 const DEMO_PASSWORD = "TraceGuard@123";
