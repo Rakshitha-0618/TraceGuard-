@@ -7,7 +7,8 @@
 
 const API_BASE =
   (typeof import.meta !== "undefined" && import.meta.env?.VITE_API_URL) ||
- https://traceguard-jojp.onrender.com;
+  "https://onrender.com";
+
 
 const TOKEN_KEY = "token";
 const DEMO_PASSWORD = "TraceGuard@123";
